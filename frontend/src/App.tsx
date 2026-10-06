@@ -152,7 +152,7 @@ export default function App() {
 
   const reportRef = useRef<HTMLDivElement>(null);
 
-  const handleStartAnalysis = async () => {
+ const handleStartAnalysis = async () => {
     if (!resumeFile) return;
 
     setIsLoading(true);
@@ -162,8 +162,11 @@ export default function App() {
     formData.append('file', resumeFile);
     formData.append('job_description', jobDescription);
 
+    // Read the production URL from Vite env, fallback to localhost for development
+    const backendBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
     try {
-      const response = await fetch(`${apiUrl}/api/analyze`, {
+      const response = await fetch(`${backendBaseUrl}/api/analyze`, {
         method: 'POST',
         body: formData,
       });
