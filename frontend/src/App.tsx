@@ -74,7 +74,7 @@ interface AnalysisResult {
   data: AnalysisData;
 }
 
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const DEMO_RESULT: AnalysisResult = {
   filename: "Demo_Software_Engineer_Resume.pdf",
@@ -163,13 +163,15 @@ export default function App() {
     formData.append('job_description', jobDescription);
 
     // Read the production URL from Vite env, fallback to localhost for development
-    const backendBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    // const backendBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
-    try {
-      const response = await fetch(`${backendBaseUrl}/api/analyze`, {
-        method: 'POST',
-        body: formData,
-      });
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+try {
+  const response = await fetch(`${apiUrl}/api/analyze`, {
+    method: 'POST',
+    body: formData,
+  });
 
       if (!response.ok) {
         const errorData = await response.json();
