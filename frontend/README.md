@@ -30,3 +30,10 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+
+<!-- ///////For Backend RUN -> -->
+<!-- .\venv\Scripts\activate 
+ uvicorn main:app --reload --port 8000
+
+ npm run dev -->
